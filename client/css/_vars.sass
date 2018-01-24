@@ -1,0 +1,21 @@
+// Contains global theme variables used in global and component/module styling.
+
+// General
+$base-font: 'Raleway', sans-serif
+$header-font: 'Roboto', sans-serif
+$theme-color-dark-blue: #002F5A
+$theme-color-dark: #000000
+$theme-color-blue: #2A4E6E
+$theme-color-gray: #828282
+$theme-color-bright: #FAFCFE
+
+
+
+@function font-size($minWidth, $baseFontSize)
+  @return (((1vw * 100) / $minWidth) * $baseFontSize)
+
+// Mobile Specific
+$mobile-font-size: font-size(320, 16)
+
+// Desktop Specific
+$desktop-font-size: font-size(800, 12)

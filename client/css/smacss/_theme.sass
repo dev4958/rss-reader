@@ -1,0 +1,73 @@
+// Base Theme
+@import url('https://fonts.googleapis.com/css?family=Raleway:300|Roboto:100')
+
+html
+  color: $theme-color-dark
+  background-color: $theme-color-bright
+  font-size: $desktop-font-size
+  font-family: $base-font
+  transition: 0.25s all
+
+h1, h2, h3, h4, h5, h6
+  font-family: $header-font
+  transition: 0.25s all
+
+h1
+  font-size: 3.157rem
+
+h2
+  font-size: 2.369rem
+
+h3
+  font-size: 1.777rem
+  line-height: 2.2rem
+
+h4
+  font-size: 1.333rem
+
+small, .font_small
+  font-size: 0.75rem
+
+a
+  text-decoration: none
+  transition: 0.25s all
+
+p
+  font-size: 1rem
+  line-height: 1.5
+
+li
+  list-style-type: none
+
+// Layout Theme
+.interface
+  h1
+    text-align: center
+  .update-feeds, .feed-entries-link, .edit-feeds-link
+    background-color: $theme-color-bright
+    border: solid 1px $theme-color-blue
+    border-radius: 4px
+    cursor: pointer
+    transition: 0.25s all
+  .action-menu
+    text-align: right
+
+// Feed Entry
+.feed-container
+  .feed
+    text-align: center
+  .feed-entry
+    text-align: left
+
+// Article Entry
+.entry-container
+  .entry
+    text-align: left
+
+// State Theme
+.interface
+  .update-feeds:hover, .feed-entries-link:hover, .add-feed-link:hover
+    background-color: $theme-color-blue
+    border: solid 1px $theme-color-dark-blue
+    color: $theme-color-bright
+    border-radius: 4px
