@@ -65,7 +65,7 @@ module.exports = (url = null, categories = []) => new Promise((resolve, reject) 
     feed['internalUrl'] = feed['title'].toLowerCase().replace(/[^a-z]/g, '-')
     feed['rssUrl'] = url
     feed['userCategories'] = categories
-    debug(`Feed Data: ${JSON.stringify(feed)}`)
+    // debug(`Feed Data: ${JSON.stringify(feed)}`)
     resolve(feed)
   })
 })
