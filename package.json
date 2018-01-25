@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dev4958/rss-reader.git"
+    "url": "git+https://github.com/sumtype/rss-reader.git"
   },
   "author": "James Mason",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dev4958/rss-reader/issues"
+    "url": "https://github.com/sumtype/rss-reader/issues"
   },
-  "homepage": "https://github.com/dev4958/rss-reader#readme",
+  "homepage": "https://github.com/sumtype/rss-reader#readme",
   "devDependencies": {
     "autoprefixer": "^7.2.3",
     "babel-cli": "^6.26.0",
