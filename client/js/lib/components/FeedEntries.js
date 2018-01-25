@@ -34,7 +34,7 @@ class FeedEntries extends React.Component {
     })
   }
   render() {
-    if (/^\/edit-feeds/.test(this.props.match.url)) return ('')
+    if (/^\/edit-feeds|^\/feed/.test(this.props.match.url)) return ('')
     let feeds = this.state.filteredFeeds.map((feed, i) => (<FeedEntry key={i} {...feed} />))
     return (
       <section>
