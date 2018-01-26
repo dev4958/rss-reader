@@ -49,6 +49,7 @@
     "json-loader": "^0.5.7",
     "moment": "^2.20.1",
     "node-sass": "^4.7.2",
+    "nodemon": "^1.14.11",
     "postcss-loader": "^2.0.9",
     "preload-webpack-plugin": "^2.0.0",
     "prop-types": "^15.6.0",
