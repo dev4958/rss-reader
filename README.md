@@ -2,7 +2,7 @@
 
 Cross-platform RSS reader for local device use.  Front-end uses React/Redux, back-end uses Node.js/Express.  FeedParser is used for feed parsing.  Deployment uses Electron (in-progress).  Development version runs the client locally with Webpack and server with Nodemon and Debug.
 
-Nearing MVP, needs refactoring, more styling, and integration with Electron.
+Nearing MVP, needs refactoring and integration with Electron.
 
 ### Usage
 
