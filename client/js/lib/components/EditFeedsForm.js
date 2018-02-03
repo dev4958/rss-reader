@@ -17,8 +17,8 @@ class EditFeedsForm extends React.Component {
     return (
       <section className={'edit-feeds-form'}>
         <ul>
-          {feeds}
           <AddFeedEntry />
+          {feeds}
         </ul>
       </section>
     )

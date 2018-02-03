@@ -10,8 +10,4 @@ const persistedState = {
   settings: {}
 }
 
-export const configureStore = () => {
-  const middleware = [thunk]
-  if (process.env.NODE_ENV !== 'production') middleware.push(createLogger())
-  return createStore(reducers, persistedState, applyMiddleware(...middleware))
-}
+export const configureStore = () => createStore(reducers, persistedState, applyMiddleware(...[thunk, createLogger()]))

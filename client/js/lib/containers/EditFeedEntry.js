@@ -11,10 +11,10 @@ class EditFeedEntry extends React.Component {
       <li className={'edit-feed-entry-form'}>
         <header className={'edit-feed-entry-header'}>
           <button className={'remove-feed-entry-button'} onClick={_ => dispatch(deleteFeedEntry(rssUrl))}>Delete</button>
-          <p>{title} | {rssUrl}</p>
+          <span>{title}</span>
         </header>
-        <section className={'edit-feed-entry-form'}>
-          <button className={'update-feed-entry-button'} onClick={_ => dispatch(updateFeedEntry({ url: rssUrl, categories: this.categories.value }))}>Update Feed</button>
+        <section>
+          <button className={'update-feed-entry-button'} onClick={_ => dispatch(updateFeedEntry({ url: rssUrl, categories: this.categories.value }))}>Update Feed Categories</button>
           <input name={'feed-categories'} type={'text'} ref={c => this.categories = c} defaultValue={userCategories.join(', ')} />
         </section>
       </li>

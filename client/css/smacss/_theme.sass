@@ -4,7 +4,7 @@
 html
   color: $theme-color-dark
   background-color: $theme-color-bright
-  font-size: $desktop-font-size
+  font-size: $mobile-font-size
   font-family: $base-font
   transition: 0.25s all
 
@@ -39,18 +39,31 @@ p
 li
   list-style-type: none
 
+input
+  border: solid 0.083rem $theme-color-gray
+  border-radius: 0.167rem
+  outline: none
+
 // Layout Theme
 .interface
   h1
     text-align: center
-  .update-feeds, .feed-entries-link, .edit-feeds-link
+  .update-feeds, .feed-entries-link, .edit-feeds-link, .remove-feed-entry-button, .update-feed-entry-button, .add-feed-entry-button
     background-color: $theme-color-bright
-    border: solid 1px $theme-color-blue
-    border-radius: 4px
+    border: solid 0.083rem $theme-color-blue
+    border-radius: 0.333rem
     cursor: pointer
     transition: 0.25s all
   .action-menu
     text-align: right
+    background-color: $theme-color-dark-blue-transparent
+  .feed-filters-container
+    text-align: center
+    .filter-link
+      background-color: $theme-color-bright
+      border: solid 0.083rem $theme-color-blue
+      border-radius: 0.333rem
+      color: $theme-color-dark
 
 // Feed Entry
 .feed-container
@@ -65,9 +78,23 @@ li
     text-align: left
 
 // State Theme
+input:focus
+  border: solid 0.083rem $theme-color-dark
+
 .interface
-  .update-feeds:hover, .feed-entries-link:hover, .add-feed-link:hover
-    background-color: $theme-color-blue
-    border: solid 1px $theme-color-dark-blue
+  .update-feeds:active, .feed-entries-link:active, .edit-feeds-link:active, .add-feed-link:active, .filter-link:active, .remove-feed-entry-button:active, .update-feed-entry-button:active, .add-feed-entry-button:active
+    background-color: $theme-color-dark
+    border: solid 0.083rem $theme-color-dark-blue
     color: $theme-color-bright
-    border-radius: 4px
+
+.modernizr-no-touchevents
+  .interface
+    .update-feeds:hover, .feed-entries-link:hover, .edit-feeds-link:hover, .add-feed-link:hover, .filter-link:hover, .remove-feed-entry-button:hover, .update-feed-entry-button:hover, .add-feed-entry-button:hover
+      background-color: $theme-color-dark
+      border: solid 0.083rem $theme-color-dark-blue
+      color: $theme-color-bright
+
+
+@media (min-width: 678px)
+  html
+    font-size: $desktop-font-size

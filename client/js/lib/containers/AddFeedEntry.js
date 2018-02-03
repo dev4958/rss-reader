@@ -14,8 +14,12 @@ class EditFeedEntry extends React.Component {
           this.url.value = ''
           this.categories.value = ''
         }}>Add Feed</button>
-        <input name={'feed-url'} type={'text'} ref={c => this.url = c} placeholder={'Feed URL.'}/>
-        <input name={'feed-categories'} type={'text'} ref={c => this.categories = c} placeholder={'Feed categories, separated by commas.'}/>
+        <section>
+          <input name={'feed-url'} type={'text'} ref={c => this.url = c} placeholder={'Feed URL.'}/>
+        </section>
+        <section>
+          <input name={'feed-categories'} type={'text'} ref={c => this.categories = c} placeholder={'Feed categories, separated by commas.'}/>
+        </section>
       </li>
     )
   }

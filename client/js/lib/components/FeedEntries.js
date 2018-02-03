@@ -35,10 +35,11 @@ class FeedEntries extends React.Component {
   }
   render() {
     if (/^\/edit-feeds|^\/feed/.test(this.props.match.url)) return ('')
-    let feeds = this.state.filteredFeeds.map((feed, i) => (<FeedEntry key={i} {...feed} />))
+    let feeds = this.state.filteredFeeds.map((feed, i) => (<FeedEntry key={i} {...feed} />)), userCategories = this.state.userCategories
+    if (typeof userCategories === 'string') userCategories = (<h1 className={'feed-filter-header'}>{userCategories}</h1>)
     return (
       <section>
-        <section className={'feed-filters-container'}>{this.state.userCategories}</section>
+        <section className={'feed-filters-container'}>{userCategories}</section>
         <ul>{feeds}</ul>
       </section>
     )

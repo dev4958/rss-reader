@@ -1,0 +1,6 @@
+{
+  "minify": true,
+  "classPrefix": "modernizr-",
+  "options": [ "setClasses" ],
+  "feature-detects": [ "touchevents" ]
+}

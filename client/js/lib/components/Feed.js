@@ -24,9 +24,9 @@ class Feed extends React.Component {
         <section className={'feed'}>
           <header className={'feed-header'}>
             <a href={link} target={'_blank'}><h2>{title}</h2></a>
+            <p>{description}</p>
+            {date ? <p>{date}</p> : ''}
           </header>
-          <p>{description}</p>
-          {date ? <p>{date}</p> : ''}
           <ul>
             {articles}
           </ul>

@@ -19,7 +19,7 @@ apiRouter.get('/feeds', (req, res) => {
   debug(`Updating feeds.`)
   getUserConfiguration().then(userConfig => {
     let feeds = userConfig['feeds'].map(feed => getFeedData(feed.url, feed.categories).then(d => d).catch(e => { error: 'Bad request.' }))
-    Promise.all(feeds).then(d => res.status(200).json(d)).catch(e => res.status(400).send('Bad request.'))
+    Promise.all(feeds).then(d => res.status(200).json(d.sort((a, b) => a['title'] > b['title']))).catch(e => res.status(400).send('Bad request.'))
   }).catch(e => res.status(400).send('Bad request.'))
 })
 

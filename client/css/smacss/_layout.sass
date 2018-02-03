@@ -1,35 +1,50 @@
 // Interface
 .interface
-  .update-feeds, .feed-entries-link, .edit-feeds-link
-    padding: 5px 15px
+  .update-feeds, .feed-entries-link, .edit-feeds-link, .remove-feed-entry-button, .update-feed-entry-button, .add-feed-entry-button
+    padding: 0.417rem 1.250rem
     outline: none
-    margin: 10px 5px
+    margin: 0.833rem 0.417rem
   .feed-entries-link
     float: left
-    margin-left: 10px
+    margin-left: 0.833rem
   .action-menu-item:last-child
-    margin-right: 10px
+    margin-right: 0.833rem
   .action-menu
     position: fixed
     width: 100%
     top: 0rem
   .edit-feeds-form
-    margin: 3rem auto
+    margin: 5rem auto
     .remove-feed-entry-button
-      margin-right: 20px
+      margin-right: 1.667rem
+    .add-feed-entry-form
+      margin: 6.667rem 1.667rem 5.000rem 1.667rem
+    .edit-feed-entry-form
+      margin: 3.333rem 1.667rem
+    .add-feed-entry-form
   .feed-filters-container
-    margin-top: 5rem
+    margin-top: 8.75rem
+    .feed-filter-header
+      margin-bottom: 0.000rem
     .filter-link
-      margin: 20px 20px
+      display: inline-block
+      margin: 1.667rem 1.667rem
+      padding: 0.417rem 1.250rem
+
 // Feed Entry
 .feed-container
   width: 90%
   margin: 5rem auto
   .feed
-    .feed-header
-      margin: 1rem auto
+    margin-top: 9rem
     p
       margin-bottom: 0.5rem
+  .feed-header
+    margin: 1rem auto
+    p:first-of-type
+      margin-top: 1rem
+    p:last-of-type
+      margin-bottom: 5rem
 
 // Article Entry
 .entry-container

@@ -82,6 +82,12 @@ let webpackConfig = {
         }
       }]
     }, {
+      test: /\.modernizrrc.js$/,
+      use: [{ loader: 'modernizr-loader' }]
+    }, {
+      test: /\.modernizrrc(\.json)?$/,
+      use: [{ loader: 'modernizr-loader' }, { loader: 'json-loader' }]
+    }, {
       test: /\.json$/,
       exclude: /node_modules/,
       use: 'json-loader'
@@ -117,6 +123,7 @@ let webpackConfig = {
       }]
     }]
   },
+  resolve: { alias: { modernizr$: path.resolve(__dirname, '.modernizrrc') } },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {

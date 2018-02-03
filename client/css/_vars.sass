@@ -4,18 +4,17 @@
 $base-font: 'Raleway', sans-serif
 $header-font: 'Roboto', sans-serif
 $theme-color-dark-blue: #002F5A
+$theme-color-dark-blue-transparent: rgba(0, 47, 90, 0.8)
 $theme-color-dark: #000000
 $theme-color-blue: #2A4E6E
 $theme-color-gray: #828282
 $theme-color-bright: #FAFCFE
 
-
-
 @function font-size($minWidth, $baseFontSize)
   @return (((1vw * 100) / $minWidth) * $baseFontSize)
 
 // Mobile Specific
-$mobile-font-size: font-size(320, 16)
+$mobile-font-size: font-size(360, 12)
 
 // Desktop Specific
-$desktop-font-size: font-size(800, 12)
+$desktop-font-size: font-size(768, 12)
