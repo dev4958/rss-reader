@@ -1,16 +1,19 @@
 'use strict'
 
+// NPM Modules
 import React from 'react'
 import { connect } from 'react-redux'
-import { addFeedEntry } from '../actions'
+
+// Actions
+import { addFeedEntry } from '../../../actions'
 
 class EditFeedEntry extends React.Component {
   render() {
-    let { dispatch } = this.props
+    let { dispatch, feeds } = this.props
     return (
       <li className={'add-feed-entry-form'}>
         <button className={'add-feed-entry-button'} onClick={_ => {
-          dispatch(addFeedEntry({ url: this.url.value, categories: this.categories.value }))
+          dispatch(addFeedEntry({ url: this.url.value, categories: this.categories.value !== '' ? this.categories.value : null, feeds: feeds }))
           this.url.value = ''
           this.categories.value = ''
         }}>Add Feed</button>

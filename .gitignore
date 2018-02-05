@@ -59,3 +59,5 @@ typings/
 
 package-lock.json
 client/assets/images/**
+!client/assets/images/loader.svg
+!client/assets/images/setup-loader.svg

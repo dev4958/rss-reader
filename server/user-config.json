@@ -1,1 +1,1 @@
-{"feeds":[{"url":"https://www.xkcd.com/rss.xml","categories":["Comics","Romance","Sarcasm","Math","Language"]},{"url":"http://feeds.feedburner.com/oatmealfeed","categories":["Comics"]},{"url":"https://tools.ietf.org/html/new-rfcs.rss","categories":["News"]}],"settings":{}}
+{"feeds":[{"url":"https://www.xkcd.com/rss.xml","categories":null},{"url":"https://tools.ietf.org/html/new-rfcs.rss","categories":["News"]},{"url":"http://theoatmeal.com/feed/rss","categories":["Web Comics"]}],"settings":{}}

@@ -4,7 +4,7 @@
 import { connect } from 'react-redux'
 
 // Components
-import Feed from '../components/Feed'
+import Feed from '../components/Feed/'
 
 const mapStateToProps = (state, ownProps) => {
   const feeds = state.feeds ? filterFeedsAndArticles(state.feeds, ownProps.feedFilters, ownProps.articleFilters) : []

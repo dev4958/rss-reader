@@ -3,7 +3,7 @@
 //NPM Modules
 import React from 'react'
 
-const Entry = ({ title, description, date, link, author, image, categories, source }) => {
+const Article = ({ title, description, date, link, author, image, categories, source }) => {
   return (
     <li className={'entry-container'}>
       <article className={'entry'}>
@@ -16,4 +16,4 @@ const Entry = ({ title, description, date, link, author, image, categories, sour
   )
 }
 
-export default Entry
+export default Article

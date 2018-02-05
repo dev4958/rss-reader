@@ -92,6 +92,20 @@ let webpackConfig = {
       exclude: /node_modules/,
       use: 'json-loader'
     }, {
+      test: /\.svg$/,
+      use: [{
+        loader: 'babel-loader'
+      }, {
+        loader: 'react-svg-loader',
+        options: {
+          jsx: false,
+          svgo: {
+            plugins: [{ removeTitle: true }, { convertColors: true }, { convertPathData: true }, { cleanupAttrs: true }, { removeDoctype: true }, { removeXMLProcInst: true }, { removeComments: true }, { removeMetadata: true }, { removeDesc: true }, { removeUselessDefs: true }, { removeXMLNS: true }, { removeEditorsNSData: true }, { removeEmptyAttrs: true }, { removeHiddenElems: true }, { removeEmptyText: true }, { removeEmptyContainers: true }, { removeViewBox: false }, { cleanupEnableBackground: true }, { minifyStyles: true }, { convertStyleToAttrs: true }, { convertTransform: true }, { removeUnknonsAndDefaults: true }, { removeNonInheritableGroupAttrs: true }, { removeUselessStrokeAndFill: true }, { removeUnusedNS: true }, { cleanupIDs: true }, { cleanupNumericValues: true }, { cleanupListOfValues: true }, { moveElemsAttrsToGroup: true }, { moveGroupAttrsToElems: true }, { collapseGroups: false }, { removeRasterImages: false }, { mergePaths: true }, { convertShapeToPath: true }, { sortAttrs: true }, { transformsWithOnePath: true }, { removeDimensions: true }, { removeAttrs: { attrs: 'feGaussianBlur:(in)' } }, { removeElementsByAttr: true }, { addClassesToSVGElement: false }, { addAttributesToSVGElement: false }, { removeScriptElement: true }, { removeStyleElement: true }],
+            floatPrecision: 2
+          }
+        }
+      }]
+    }, {
       test: /\.(jpe?g|png|gif)$/i,
       use: [ 'file-loader?name=assets/images/[name].[ext]', {
         loader: 'image-webpack-loader',

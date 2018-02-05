@@ -1,8 +1,11 @@
 'use strict'
 
+// NPM Modules
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateFeeds } from '../actions'
+
+// Actions
+import { updateFeeds } from '../../../actions'
 
 class UpdateFeeds extends React.Component {
   render() {

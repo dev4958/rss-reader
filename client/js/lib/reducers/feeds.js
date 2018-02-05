@@ -8,7 +8,7 @@ export default (state = [], action) => {
     case 'ADDED_FEED_ENTRY':
       newState = state.slice()
       newState.push(action.payload)
-      return newState
+      return newState.sort((a, b) => a['title'] > b['title'])
     case 'UPDATED_FEED_ENTRY':
       newState = state.slice()
       for (let i = 0; i < newState.length; i++) {
@@ -20,11 +20,12 @@ export default (state = [], action) => {
       }
       return newState
     case 'DELETED_FEED_ENTRY':
-      return state.filter(f => f.rssUrl !== action.payload)
+      return state.slice().filter(f => f.rssUrl !== action.payload)
     case 'FETCHING_FEEDS':
     case 'ADDING_FEED_ENTRY':
     case 'UPDATING_FEED_ENTRY':
     case 'DELETING_FEED_ENTRY':
+    case 'ERROR_ADDING_FEED_ENTRY':
     default:
       return state
   }
