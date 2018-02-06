@@ -12,6 +12,7 @@ import FeedEntry from './components/FeedEntry'
 class FeedList extends React.Component {
   constructor(props) {
     super(props)
+    let { browserHistory } = props
     let userCategories = null
     if (props.match.params.hasOwnProperty('filter')) {
       userCategories = props.match.params.filter

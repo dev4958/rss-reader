@@ -12,8 +12,7 @@ import AddFeedEntry from './containers/AddFeedEntry'
 
 class EditFeedsForm extends React.Component {
   render() {
-    if (this.props.match.url !== '/edit-feeds') return ('')
-    let { feeds } = this.props
+    let { feeds, browserHistory } = this.props
     return (
       <main>
         <section className={'interface edit-feeds-interface'}>

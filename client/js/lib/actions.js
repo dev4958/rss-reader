@@ -51,3 +51,7 @@ export const addFeedEntry = feedEntry => dispatch => {
     dispatch(({ type: 'ERROR_ADDING_FEED_ENTRY', payload: feedEntry }))
   }
 }
+
+export const updateBrowserHistory = location => dispatch => dispatch({ type: 'UPDATE_BROWSER_HISTORY', payload: location })
+
+export const updateApplicationState = (actionType, state) => dispatch => dispatch({ type: 'UPDATE_APPLICATION_STATE', payload: { actionType, state } })

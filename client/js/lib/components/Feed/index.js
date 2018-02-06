@@ -11,7 +11,7 @@ import Article from './components/Article'
 
 class Feed extends React.Component {
   render() {
-    const { match, feeds } = this.props
+    const { match, feeds, browserHistory } = this.props
     let feed = null
     for (let i = 0; i < feeds.length; i++) if (feeds[i].internalUrl === match.params.feed) {
       feed = feeds[i]

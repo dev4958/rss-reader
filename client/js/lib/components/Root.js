@@ -3,13 +3,18 @@
 // NPM Modules
 import React from 'react'
 import { Provider, connect } from 'react-redux'
-import { BrowserRouter as Router, Route, IndexRoute } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Modernizr from 'modernizr'
 
 // Components
-import EditFeedsContainer from '../containers/EditFeedsContainer'
-import FeedContainer from '../containers/FeedContainer'
-import FeedListContainer from '../containers/FeedListContainer'
+import InterfaceContainer from './InterfaceContainer'
+import EditFeedsFormComponent from './EditFeedsForm/'
+import FeedListComponent from './FeedList/'
+import FeedComponent from './Feed/'
+
+const EditFeedsForm = InterfaceContainer(EditFeedsFormComponent)
+const FeedList = InterfaceContainer(FeedListComponent)
+const Feed = InterfaceContainer(FeedComponent)
 
 class Root extends React.Component {
   render() {
@@ -18,10 +23,10 @@ class Root extends React.Component {
       <Provider store={store} key='provider'>
         <Router>
           <section>
-            <Route exact path='/' component={FeedListContainer} />
-            <Route path='/filter/:filter' component={FeedListContainer} />
-            <Route path='/feed/:feed' component={FeedContainer} />
-            <Route path='/edit-feeds' component={EditFeedsContainer} />
+            <Route exact path='/' component={FeedList} />
+            <Route path='/filter/:filter' component={FeedList} />
+            <Route path='/feed/:feed' component={Feed} />
+            <Route path='/edit-feeds' component={EditFeedsForm} />
           </section>
         </Router>
       </Provider>
