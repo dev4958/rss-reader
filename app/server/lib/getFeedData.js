@@ -12,10 +12,19 @@ const DOMPurify = createDOMPurify(window)
 
 module.exports = (url = null, categories = []) => new Promise((resolve, reject) => {
   debug(`Now retrieving new feed data @ [${url}].`)
-  let req = request(url), feedparser = new FeedParser(), feed = { articles: [] }
-  req.on('error', (e) => reject(e))
-  feedparser.on('error', (e) => reject(e))
-  req.on('response', function(res) { res.statusCode !== 200 ? reject('Failed request.') : this.pipe(feedparser) })
+  let req = request({ url: url, headers: { 'User-Agent': 'RSS Reader' } }), feedparser = new FeedParser(), feed = { articles: [] }
+  req.on('error', (e) => {
+    debug(`Feed Request Error @ [${url}]: ${e}`)
+    reject(e)
+  })
+  feedparser.on('error', (e) => {
+    debug(`Feed Parser Error @ [${url}]: ${e}`)
+    reject(e)
+  })
+  req.on('response', function(res) {
+    debug(`Response Status Code @ [${url}]: ${res.statusCode}`)
+    res.statusCode !== 200 ? reject('Failed request.') : this.pipe(feedparser)
+  })
   feedparser.on('data', (chunk, article = {}) => {
     DOMPurify.setConfig({ ALLOWED_TAGS: ['p', 'a', 'figure', 'span', 'em', '#text'], SAFE_FOR_JQUERY: true, SAFE_FOR_TEMPLATES: true, ALLOWED_ATTR: [] })
     article['title'] = chunk.hasOwnProperty('title') ? DOMPurify.sanitize(chunk.title) : null
@@ -56,6 +65,7 @@ module.exports = (url = null, categories = []) => new Promise((resolve, reject) 
     feed['internalUrl'] = feed['title'].toLowerCase().replace(/[^a-z]/g, '-')
     feed['rssUrl'] = url
     feed['userCategories'] = categories
+    // debug(`Feed Data: ${JSON.stringify(feed)}`)
     resolve(feed)
   })
 })

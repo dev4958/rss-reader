@@ -1,8 +1,6 @@
 # RSS Reader
 
-Cross-platform RSS reader for local device use.  The following are the primary libraries used to build the application.
-
-Nearing MVP, needs some refactoring and integration work with Electron.
+Cross-platform RSS reader.  The following are the primary libraries used to build the application.
 
 * Front-End Libraries
   * React (version 16, +Router)
@@ -25,8 +23,9 @@ Nearing MVP, needs some refactoring and integration work with Electron.
   * Babel
   * Electron
 
-Webpack is configured to enable ES6+ syntax, SASS styling with pre-processing, image and JSON file loading (PNG, JPG, GIF, and SVG), image optimization (imagemin and svgo), HTML/CSS/JS optimization (common procedures -minification, etc.), and production file compression (gzip).  Able to run as a development server with hot-reloading too.
+Webpack is configured to enable ES6+ syntax, SASS styling with pre-processing, image and JSON file loading (PNG, JPG, and GIF), image optimization (imagemin), HTML/CSS/JS optimization (common procedures -minification, etc.), and production file compression (gzip).  Able to run as a development server with hot-reloading too.
 
+**Nearing MVP, needs integration work with Electron.**
 
 ### Usage
 

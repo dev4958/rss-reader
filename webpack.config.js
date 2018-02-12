@@ -5,6 +5,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin')
 const extractTextPlugin = require('extract-text-webpack-plugin')
 const compressionPlugin = require('compression-webpack-plugin')
 const preloadWebpackPlugin = require('preload-webpack-plugin')
+const uglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
 
 let production = process.env.NODE_ENV === 'production'
@@ -64,23 +65,22 @@ let webpackConfig = {
   },
   output: {
     path: path.resolve(__dirname, 'app', 'client'),
-    filename: './js/[name].bundle.js',
-    crossOriginLoading: 'anonymous'
+    filename: './js/[name].bundle.js'
   },
   module: {
     rules: [{
-      test: /\.(scss|sass)$/,
-      use: css
-    }, {
       test: /\.js$/,
       exclude: /node_modules/,
       use: [{
         loader: 'babel-loader',
         options: {
-          presets: ['env', 'react'],
-          plugins: ['transform-object-rest-spread', 'transform-runtime']
+          presets: ['@babel/preset-env', '@babel/preset-react'],
+          plugins: ['@babel/plugin-proposal-object-rest-spread', '@babel/transform-runtime']
         }
       }]
+    }, {
+      test: /\.(scss|sass)$/,
+      use: css
     }, {
       test: /\.modernizrrc.js$/,
       use: [{ loader: 'modernizr-loader' }]
@@ -91,20 +91,6 @@ let webpackConfig = {
       test: /\.json$/,
       exclude: /node_modules/,
       use: 'json-loader'
-    }, {
-      test: /\.svg$/,
-      use: [{
-        loader: 'babel-loader'
-      }, {
-        loader: 'react-svg-loader',
-        options: {
-          jsx: false,
-          svgo: {
-            plugins: [{ removeTitle: true }, { convertColors: true }, { convertPathData: true }, { cleanupAttrs: true }, { removeDoctype: true }, { removeXMLProcInst: true }, { removeComments: true }, { removeMetadata: true }, { removeDesc: true }, { removeUselessDefs: true }, { removeXMLNS: true }, { removeEditorsNSData: true }, { removeEmptyAttrs: true }, { removeHiddenElems: true }, { removeEmptyText: true }, { removeEmptyContainers: true }, { removeViewBox: false }, { cleanupEnableBackground: true }, { minifyStyles: true }, { convertStyleToAttrs: true }, { convertTransform: true }, { removeUnknonsAndDefaults: true }, { removeNonInheritableGroupAttrs: true }, { removeUselessStrokeAndFill: true }, { removeUnusedNS: true }, { cleanupIDs: true }, { cleanupNumericValues: true }, { cleanupListOfValues: true }, { moveElemsAttrsToGroup: true }, { moveGroupAttrsToElems: true }, { collapseGroups: false }, { removeRasterImages: false }, { mergePaths: true }, { convertShapeToPath: true }, { sortAttrs: true }, { transformsWithOnePath: true }, { removeDimensions: true }, { removeAttrs: { attrs: 'feGaussianBlur:(in)' } }, { removeElementsByAttr: true }, { addClassesToSVGElement: false }, { addAttributesToSVGElement: false }, { removeScriptElement: true }, { removeStyleElement: true }],
-            floatPrecision: 2
-          }
-        }
-      }]
     }, {
       test: /\.(jpe?g|png|gif)$/i,
       use: [ 'file-loader?name=assets/images/[name].[ext]', {
@@ -150,6 +136,7 @@ let webpackConfig = {
       disable: !production,
       allChunks: true
     }),
+    new uglifyJsPlugin(),
     new preloadWebpackPlugin({
       rel: 'preload',
       as(entry) {

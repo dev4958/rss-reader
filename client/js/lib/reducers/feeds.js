@@ -1,8 +1,5 @@
 'use strict'
 
-// Actions
-import { updateApplicationState } from '../actions'
-
 export default (state = [], action) => {
   let newState = null
   switch (action.type) {

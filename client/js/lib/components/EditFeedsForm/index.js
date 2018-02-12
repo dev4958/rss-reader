@@ -7,18 +7,19 @@ import { withRouter } from 'react-router-dom'
 
 // Components
 import ActionMenu from '../ActionMenu/'
+import ErrorMessage from '../ErrorMessage'
 import EditFeedEntry from './containers/EditFeedEntry'
 import AddFeedEntry from './containers/AddFeedEntry'
 
 class EditFeedsForm extends React.Component {
   render() {
-    let { feeds, browserHistory } = this.props
+    let { feeds, applicationState } = this.props
     return (
       <main>
         <section className={'interface edit-feeds-interface'}>
-          <ActionMenu feeds={feeds} />
+          <ActionMenu feeds={feeds} applicationState={applicationState} />
           <section className={'edit-feeds-form'}>
-            <p id={'edit-feeds-error'}>Edit feeds form error message.</p>
+            <ErrorMessage id={'edit-feeds-error'} applicationState={applicationState} />
             <ul>
               <AddFeedEntry feeds={feeds} />
               {feeds.map((feed, i) => (<EditFeedEntry key={i} feed={feed} />))}

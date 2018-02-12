@@ -19,13 +19,21 @@ apiRouter.get('/feeds', (req, res) => {
   debug(`Updating feeds.`)
   getUserConfiguration().then(userConfig => {
     let feeds = userConfig['feeds'].map(feed => getFeedData(feed.url, feed.categories).then(d => d).catch(e => { error: 'Bad request.' }))
-    Promise.all(feeds).then(d => res.status(200).json(d)).catch(e => res.status(400).send('Bad request.'))
+    Promise.all(feeds).then(d => res.status(200).json(d.sort((a, b) => a['title'] > b['title']))).catch(e => res.status(400).send('Bad request.'))
+  }).catch(e => res.status(400).send('Bad request.'))
+})
+
+apiRouter.get('/settings', (req, res) => {
+  debug(`Getting user configuration settings.`)
+  getUserConfiguration().then(userConfig => {
+    let feeds = userConfig['feeds'].map(feed => getFeedData(feed.url, feed.categories).then(d => d).catch(e => { error: 'Bad request.' }))
+    Promise.all(feeds).then(d => res.status(200).json({ feeds: d.sort((a, b) => a['title'] > b['title']), settings: userConfig.settings })).catch(e => res.status(400).send('Bad request.'))
   }).catch(e => res.status(400).send('Bad request.'))
 })
 
 apiRouter.post('/add', (req, res) => {
   debug(`Adding feed data to user configuration.`)
-  let feed = { url: req.body.url, categories: req.body.categories.split(',').map(s => s.trim()) }
+  let feed = { url: req.body.url, categories: req.body.categories ? req.body.categories.split(',').map(s => s.trim()).filter(c => c !== '') : null }
   getUserConfiguration().then(userConfig => {
     userConfig.feeds.push(feed)
     updateUserConfiguration(userConfig).then(_ => getFeedData(feed.url, feed.categories).then(d => res.status(200).json(d)).catch(e => res.status(400).send('Bad request.'))).catch(e => res.status(400).send('Bad request.'))
@@ -34,7 +42,7 @@ apiRouter.post('/add', (req, res) => {
 
 apiRouter.put('/update', (req, res) => {
   debug(`Updating feed data in user configuration.`)
-  let feed = { url: req.body.url, categories: req.body.categories.split(',').map(s => s.trim()) }
+  let feed = { url: req.body.url, categories: req.body.categories ? req.body.categories.split(',').map(s => s.trim()).filter(c => c !== '') : null }
   getUserConfiguration().then(userConfig => {
     for (let i = 0; i < userConfig['feeds'].length; i++) if (userConfig['feeds'][i].url === feed.url) {
       userConfig['feeds'][i] = feed

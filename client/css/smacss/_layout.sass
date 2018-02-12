@@ -13,8 +13,6 @@
     position: fixed
     width: 100%
     top: 0rem
-    .loading
-      opacity: 1 !important
   .edit-feeds-form
     margin: 5rem auto
     .remove-feed-entry-button
@@ -33,7 +31,11 @@
       margin: 1.667rem 1.667rem
       padding: 0.417rem 1.250rem
 
-// Feed Entry
+// Error Messages
+.error-message
+  transition: 0.25s all
+
+// Feed Entries
 .feed-container
   width: 90%
   margin: 5rem auto
@@ -48,7 +50,7 @@
     p:last-of-type
       margin-bottom: 5rem
 
-// Article Entry
+// Article Entries
 .entry-container
   width: 90%
   margin: 2rem auto

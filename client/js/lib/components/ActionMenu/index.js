@@ -1,7 +1,6 @@
 'use strict'
 
 // NPM Modules
-
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -12,10 +11,10 @@ import EditFeedsLink from './components/EditFeedsLink'
 import FeedEntriesLink from './components/FeedEntriesLink'
 
 // Images
-import Loader from '../../../../assets/images/loader.svg'
+import Loader from './components/Loader'
 
 // Actions
-import { updateBrowserHistory, updateFeeds } from '../../actions'
+import { updateBrowserHistory } from '../../actions'
 
 class ActionMenu extends React.Component {
   constructor(props) {
@@ -30,22 +29,24 @@ class ActionMenu extends React.Component {
       dispatch(updateBrowserHistory(document.location.pathname))
       window.scrollTop = 0
     }
-    if (this.state.removeHistoryEventListener === null) this.setState({ removeHistoryEventListener: this.props.history.listen((location, action) => {
-      dispatch(updateBrowserHistory(document.location.pathname))
-      window.scrollTop = 0
-    }) })
+    if (this.state.removeHistoryEventListener === null) this.setState({
+      removeHistoryEventListener: this.props.history.listen((location, action) => {
+        dispatch(updateBrowserHistory(document.location.pathname))
+        window.scrollTop = 0
+      })
+    })
   }
   componentWillUnmount() {
     this.state.removeHistoryEventListener()
   }
   render() {
-    let { feeds } = this.props
+    let { feeds, applicationState, match } = this.props
     return (
-      <section className={'action-menu'} >
-        <FeedEntriesLink />
-        <Loader id={'loader-icon'} className={''} />
+      <section className={'action-menu'}>
+        {this.props.match.url !== '/' ? (<FeedEntriesLink />) : ''}
+        <Loader applicationState={applicationState} />
         {feeds.length ? (<UpdateFeeds />) : ''}
-        <EditFeedsLink />
+        {match.url !== '/edit-feeds' ? (<EditFeedsLink />) : ''}
       </section>
     )
   }

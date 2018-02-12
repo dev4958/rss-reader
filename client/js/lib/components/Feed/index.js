@@ -1,6 +1,6 @@
 'use strict'
 
-//NPM Modules
+// NPM Modules
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -11,18 +11,18 @@ import Article from './components/Article'
 
 class Feed extends React.Component {
   render() {
-    const { match, feeds, browserHistory } = this.props
+    const { match, feeds, applicationState } = this.props
     let feed = null
     for (let i = 0; i < feeds.length; i++) if (feeds[i].internalUrl === match.params.feed) {
       feed = feeds[i]
       break
     }
-    let { articles, title, description, date, link, author, language, favicon, copyright, image, categories } = feed
+    let { articles, title, description, date, link } = feed
     articles = articles.map((article, i) => <Article key={i} {...article} />)
     return (
       <main>
         <section className={'interface feed-interface'}>
-          <ActionMenu feeds={feeds} />
+          <ActionMenu feeds={feeds} applicationState={applicationState} />
           <section className={'feed-container'}>
             <section className={'feed'}>
               <header className={'feed-header'}>

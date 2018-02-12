@@ -20,7 +20,7 @@ class EditFeedEntry extends React.Component {
     this.setState({ value: nextProps.feed.userCategories ? nextProps.feed.userCategories.join(', ') : '' })
   }
   render() {
-    let { feed, dispatch, update } = this.props, { title, rssUrl } = feed, input = (<input name={'feed-categories'} type={'text'} placeholder={'Feed categories, separated by commas.'} value={this.state.value} ref={c => this.categories = c} onChange={this.handleChange} />)
+    let { feed, dispatch } = this.props, { title, rssUrl } = feed, input = (<input name={'feed-categories'} type={'text'} placeholder={'Feed categories, separated by commas.'} value={this.state.value} ref={c => this.categories = c} onChange={this.handleChange} />)
     return (
       <li className={'edit-feed-entry-form'}>
         <header className={'edit-feed-entry-header'}>

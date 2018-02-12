@@ -7,9 +7,6 @@ import { combineReducers } from 'redux'
 import feeds from './feeds'
 import browserHistory from './browserHistory'
 import applicationHistory from './applicationHistory'
+import applicationState from './applicationState'
 
-export default combineReducers({
-  feeds,
-  browserHistory,
-  applicationHistory
-})
+export default combineReducers({ feeds, browserHistory, applicationHistory, applicationState })
